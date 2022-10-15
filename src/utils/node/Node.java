@@ -21,7 +21,18 @@ public class Node {
      * @param node índice al nodo vecino
      * @param weight peso de la arista entre los nodos
      */
-    public void addNeighbor(int node, int weight) {
+    public void addEdge(int node, int weight) {
         neighbors.add(new Pair(node, weight));
+    }
+
+    /**
+     * Muestra el arreglo de vecinos a una forma legible
+     */
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < neighbors.size(); i++) {
+            builder.append("[-("+neighbors.get(i).getWeight()+"->"+neighbors.get(i).getNode()+"]");
+        }
+        return builder.toString();
     }
 }

@@ -20,14 +20,14 @@ public final class Pair {
     }
     
     /**
-     * @return índice del nodo vecino
+     * @return Índice del nodo vecino
      */
     protected int getNode() {
         return node;
     }
 
     /**
-     * @return peso de la arista con el vecino
+     * @return Peso de la arista con el vecino
      */
     protected int getWeight() {
         return weight;

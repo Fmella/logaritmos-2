@@ -14,7 +14,7 @@ public final class Pair {
      * @param node índice al nodo vecino
      * @param weight peso de la arista entre los nodos
      */
-    protected Pair(int node, int weight) {
+    public Pair(int node, int weight) {
         this.node = node;
         this.weight = weight;
     }
@@ -22,14 +22,14 @@ public final class Pair {
     /**
      * @return Índice del nodo vecino
      */
-    protected int getNode() {
+    public int getNode() {
         return node;
     }
 
     /**
      * @return Peso de la arista con el vecino
      */
-    protected int getWeight() {
+    public int getWeight() {
         return weight;
     }
 }

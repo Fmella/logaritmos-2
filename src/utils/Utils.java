@@ -1,6 +1,5 @@
 package utils;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import utils.node.Node;
@@ -50,7 +49,7 @@ public final class Utils {
     private static long time_fun(Function fun, Node[] nodes) {
 
         long start = System.currentTimeMillis();
-        Object[] res = fun.call(nodes);
+        Object[] _res = fun.call(nodes);
         long end = System.currentTimeMillis();
         return end - start;
     }
@@ -71,15 +70,17 @@ public final class Utils {
 
         // Arreglo de nodos
         Node[] nodes = new Node[n_nodes];
-        // Se inicializa cada nodo
-        for (int i = 0; i < n_nodes; i++) nodes[i] = new Node();
+        // Se inicializa cada nodo con su índice (identificación)
+        for (int i = 0; i < n_nodes; i++) {
+            nodes[i] = new Node();
+            nodes[i].setIndex(i);
+        }
 
         for (int j = 0; j < iteraciones; j++) {
             // Se limpia el arreglo de aristas de cada nodo
             for (int k = 0; k < n_nodes; k++) nodes[k].clear();
             // Generar aristas aleatorias
             random_edges(nodes, aristas);
-            System.out.println(Arrays.toString(nodes));
 
             // Se suma al tiempo total lo que se demora en ejecutar el algoritmo en el arreglo de nodos
             total += time_fun(fun, nodes);

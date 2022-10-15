@@ -10,7 +10,8 @@ public interface Function {
     /**
      * Método call que implementa el algoritmo.
      * @param nodes arreglo de nodos que conocen sus vecinos
+     * @return Un arreglo con los nodos previos de cada nodo y un arreglo con las distancias de los nodos a la raiz.
      */
-    public void call(Node[] nodes);
+    public Object[] call(Node[] nodes);
 }
 

@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import utils.node.Node;
@@ -47,8 +48,9 @@ public final class Utils {
      * @return Tiempo de ejecución en milisegundos
      */
     private static long time_fun(Function fun, Node[] nodes) {
+
         long start = System.currentTimeMillis();
-        fun.call(nodes);
+        Object[] res = fun.call(nodes);
         long end = System.currentTimeMillis();
         return end - start;
     }
@@ -63,14 +65,22 @@ public final class Utils {
      * @return Tiempo promedio de ejecución en milisegundos
      */
     public static double promedio(int iteraciones, int n_nodes, int aristas, Function fun) {
+        
         // Tiempo total
         double total = 0;
-        Node[] nodes;
-        for (int i = 0; i < iteraciones; i++) {
-            // Arreglo de nodos
-            nodes = new Node[n_nodes];
+
+        // Arreglo de nodos
+        Node[] nodes = new Node[n_nodes];
+        // Se inicializa cada nodo
+        for (int i = 0; i < n_nodes; i++) nodes[i] = new Node();
+
+        for (int j = 0; j < iteraciones; j++) {
+            // Se limpia el arreglo de aristas de cada nodo
+            for (int k = 0; k < n_nodes; k++) nodes[k].clear();
             // Generar aristas aleatorias
             random_edges(nodes, aristas);
+            System.out.println(Arrays.toString(nodes));
+
             // Se suma al tiempo total lo que se demora en ejecutar el algoritmo en el arreglo de nodos
             total += time_fun(fun, nodes);
         }

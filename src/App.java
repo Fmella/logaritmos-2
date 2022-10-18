@@ -6,7 +6,7 @@ public class App {
         
         // Se instancian los algoritmos
         Algoritmo1 algoritmo1 = new Algoritmo1();
-
+        Algoritmo2 algoritmo2 = new Algoritmo2();
         
         // Se instancia la gráfica
         Plot plot = new Plot(
@@ -28,6 +28,12 @@ public class App {
             alg1[j] = (int) Utils.promedio(50, n_nodes, (int) Math.pow(2, x[j]), algoritmo1);
         }
         plot.addSerie("Algoritmo 1", x, alg1);
+
+        int[] alg2 = new int[9];
+        for (int j = 0; j < alg2.length; j++) {
+            alg2[j] = (int) Utils.promedio(50, n_nodes, (int) Math.pow(2, x[j]), algoritmo2);
+        }
+        plot.addSerie("Algoritmo 2", x, alg2);
 
 
         plot.finish();
